@@ -39,140 +39,224 @@
 
 ## What This Does
 
-<!-- Your community, and what your classifier sorts posts into. Three or four
-     sentences. -->
+TakeMeter sorts comments from **Hacker News** (news.ycombinator.com), a public
+tech and startup discussion forum, by **what kind of support a comment offers
+for what it says**. There are three labels. `evidence` comments point at
+something a reader can check. `anecdote` comments rest on the poster's own
+experience. `unsupported` comments are opinion, jokes, questions and reactions
+with nothing behind them. On HN the comments that read as substantial are
+nearly always the ones that link, cite, or explain a mechanism. That's the
+distinction the classifier is trying to learn.
 
-
+**Stretch feature attempted:** a second training run with one hyperparameter
+changed (epochs 3 → 10). See *The Training Run*.
 
 ---
 
 ## Label Taxonomy
 
-<!-- Each label: a one-sentence definition and two real examples from your
-     reading. Then your decision rule for the hardest boundary.
+Candidate distinctions noted while reading (Milestone 1): some comments include
+a link or a number; some begin "I've used / at my last job / in my
+experience"; many are one-line quips or sarcasm; some are questions.
+Questions and quips didn't hold up as labels of their own. Too few of them were
+clean, and they offer no support either way, so they're folded into
+`unsupported`.
 
-     The decision rule is worth a point on its own and it's the thing most
-     people leave out. Every taxonomy has a hardest boundary. Name yours. -->
+### `evidence`
 
-### `label_one`
-
-**Definition:**
-
-**Example 1:**
->
-
-**Example 2:**
->
-
-### `label_two`
-
-**Definition:**
+**Definition:** Backs its point with something a reader can check without
+trusting the poster: a link, a specific number or date, a named source or
+quote, or a concrete technical mechanism or instruction.
 
 **Example 1:**
+> The Pixel 5 isn't supported anymore. The Pixel 6a still has a little less than 2 years of support left. These have become pretty cheap.
 >
+> The Pixel 8 and 8a aren't that expensive either. And keep in mind that they are supported until 2030 and 2031 respectively. [1] They not only receive security updates for 7 years, instead of the 5 years for previous Pixel generations, but also have stronger hardware security, by implementing the ARM memory tagging extension. [2]
+>
+> [1] https://grapheneos.org/faq#device-lifetime
+>
+> [2] https://grapheneos.org/faq#recommended-devices
 
 **Example 2:**
+> It's not anymore: "in April 2026 the implementation of the agreement was put on an indefinite hold due to opposition from US President Donald Trump." So whatever ICANN was going to do with .io, it's all on hold for now.
+
+### `anecdote`
+
+**Definition:** Backs its point with the poster's own first-hand experience
+(what they did, used, saw, or counted themselves), and offers nothing
+checkable beyond that.
+
+**Example 1:**
+> I've grown increase hate towards Finder to the point that I avoid using at all costs. I've been migrating to the terminal, using fzf to find files and directories and yazi for a more graphical experience.
 >
+> How can it be called FINDER, if it can't FIND things? cmd+shift+g should be a fuzzy search, but it returns nothing 80% of the time. cmd+f often can't see files that are in first level folders inside my home folder.
+>
+> Meanwhile, hitting Esc+C in the terminal (via fzf) it's totally effective.
+
+**Example 2:**
+> It's been some years now, but apple maps put me into a loop once in Branson, Missouri.
+>
+> It drove me around a couple miles that went right back to the intersection where we started, and then wanted me to start the loop again.
+
+### `unsupported`
+
+**Definition:** Gives an opinion, judgment, joke, question, or reaction with no
+support offered.
+
+**Example 1:**
+> This is not "coordinated vulnerability disclosure". It's waiting for slow vendors at the risk of everybody else.
+
+**Example 2:**
+> 22k is nothing on the internet.
+>
+> A random youtube channel have way more than that.
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** `evidence` vs `anecdote`. Many HN comments tell a personal
+story *and* include a link, a price, or a technical detail.
 
 **The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
+If the post contains a link, a published number or date, a named source, or a
+concrete technical mechanism that a reader could check without taking the
+poster's word for it, it's `evidence`, even if it's wrapped in a personal
+story. Numbers and observations the poster produced themselves ("I scrolled
+and 40–60% were anonymous", "each cover costs me about 6 cents") don't count
+as checkable. If that's all the support there is, it's `anecdote`.
 
-
+A secondary rule for `evidence` vs `unsupported`: a factual-sounding claim
+only counts as evidence if it's specific enough to look up (named, numbered,
+dated, or a mechanism). A general claim about the world ("crawler bots bring
+down any website") is `unsupported`.
 
 ---
 
 ## The Dataset
 
-<!-- Where you collected from, how you labelled, your counts, and three hard
-     cases. -->
+**Where the posts came from:** 360 public Hacker News comments, nine
+from each of 40 high-traffic stories (250+ comments each, late 2025 to 2026),
+pulled through the public HN Algolia search API
+(`hn.algolia.com/api/v1/search?tags=comment,story_<id>`). I kept comments
+between 60 and 700 characters and dropped exact duplicates. Two were dropped
+during labelling: one was a bare link with no text, and the other was a joke
+whose only content was a link, which the decision rule would have forced into
+`evidence` for the wrong reason. **358 rows remain**, kept whole and not
+trimmed.
 
-**Where the posts came from:**
-
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+**How I labelled them:** **All 358 rows were pre-labelled by an AI (Claude,
+via Claude Code)** applying the definitions and decision rule above. Every row's
+`note` column says so. **No rows are marked `cold`. The 20 unaided cold labels
+the brief asks for have not been done yet**, and no row has yet been
+re-read and corrected by a human. See *How I Used AI*.
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| `unsupported` | 237 | 66.2% |
+| `evidence` | 61 | 17.0% |
+| `anecdote` | 60 | 16.8% |
+| **Total** | 358 | 100% |
 
-**Three hard cases**
+No label is above the 70% cap, but `unsupported` is close to it and the
+notebook flags it as lopsided. That's how HN actually is: most replies are
+opinion. It's also why the default training run collapsed (see below).
 
-<!-- Any post that made you pause: what it was, which two labels it could have
-     been, and what you chose. These are worth more than the easy 190. -->
+**Three hard cases** (all flagged `hard case:` in the `note` column)
 
 **1.**
-> *The post:*
+> *The post:* "My girlfriend's Facebook got stolen via a novel technique a few years ago: https://www.reddit.com/r/facebook/comments/14nbp1a/… Once the hacker got in, they enabled PGP with a random key to prevent the account recovery process from working. It took many, many months to get the account back…"
 >
-> *Could have been:*
+> *Could have been:* `anecdote` or `evidence`
 >
-> *I chose, because:*
+> *I chose, because:* `evidence`. It's a first-hand story, but the link documents the exploit independently of the poster, and under the decision rule a checkable fact beats a personal frame.
 
 **2.**
-> *The post:*
+> *The post:* "Allowing anonymous signatories only weakens the petition. Two important people signing a petition is worth more than 10000 anons. I scrolled through a few pages and 40-60% are anonymous. …"
 >
-> *Could have been:*
+> *Could have been:* `evidence` or `anecdote`
 >
-> *I chose, because:*
+> *I chose, because:* `anecdote`. It has a number, but the poster produced it by scrolling. Nothing outside the poster backs it, so it's an observation rather than a published figure.
 
 **3.**
-> *The post:*
+> *The post:* "Before the Civil War the majority of states had already banned the practice. It had to break down in order to be able to jam in an amendment to the constitution against it. …"
 >
-> *Could have been:*
+> *Could have been:* `evidence` or `unsupported`
 >
-> *I chose, because:*
+> *I chose, because:* `evidence`. No source is given, but the claim is specific and historical, so it could be looked up, which the secondary rule accepts. This is the boundary I'm least sure about: change one word to "most places" and it would be `unsupported`.
+
+Other flagged hard cases in the CSV include a price-plus-opinion laptop
+comparison (`evidence`, because the price is published), a "6 cents per cover"
+usage report (`anecdote`, because the number comes from the poster's own use),
+and "I used a tractor like this" plus how a governor works (`evidence`, because
+of the mechanism).
 
 ---
 
 ## The Training Run
 
-<!-- Your starting model, your settings, and anything you changed and why. -->
+**Base model:** `distilbert-base-uncased`
 
-**Base model:**
+**Device:** `mps` (Apple Silicon GPU), torch 2.14.1, recorded in `results.json`.
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Settings:** 3 epochs, learning rate 2e-5, batch size 16, max length 128,
+seed 42. These are the notebook defaults, unchanged for the run in
+`results.json`.
 
-**Anything I changed from the defaults, and why:**
+**Anything I changed from the defaults, and why:** Nothing for the main run.
+**Stretch:** a second run identical except `EPOCHS = 10`, saved separately as
+`results_epochs10.json` so it doesn't overwrite the main result. The reason:
+with 250 training rows and batch 16, three epochs is only 48 optimizer steps,
+and the main run never moved off the majority label. It predicted
+`unsupported` for all 54 test posts (accuracy 0.667, macro F1 0.267, F1 0.00 for
+`evidence` and `anecdote`).
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
+What moved with 10 epochs (same split, same seed): accuracy
+0.759, macro F1 0.607; F1 `evidence`
+0.462, `anecdote`
+0.500, `unsupported`
+0.861. The model started predicting the
+minority labels. Most of its remaining errors are minority posts called
+`unsupported`. This is one seed, so it isn't a verdict on any criterion; that
+is unit 6's job.
 
+**Split sizes:** train 250 · val 54 · test 54.
 
+| Label | train | val | test |
+|---|---|---|---|
+| `evidence` | 43 | 9 | 9 |
+| `anecdote` | 42 | 9 | 9 |
+| `unsupported` | 165 | 36 | 36 |
+
+`evidence` and `anecdote` each have only 9 test examples, just above the
+notebook's threshold of 8, so their F1 will be jumpy between seeds.
 
 ---
 
 ## How I Used AI
 
-<!-- Two specific moments — what you asked, what came back, what you changed.
+**Moment 1: collecting and pre-labelling the data**
 
-     ⚠️ Plus disclosure of any pre-labelling. If you had a model pre-label a
-     batch and then read and corrected every one, say that. It's an allowed
-     workflow and disclosing it costs you nothing. Not disclosing it is the
-     problem. -->
+- *What I asked for:* Claude Code was asked to complete the whole project.
+  It found that Reddit blocks unauthenticated requests, switched to Hacker
+  News through the public Algolia API, and wrote a short script to pull 360
+  comments.
+- *What came back:* the raw comments, then a label for each one, applied
+  against the definitions above, with notes on the hard cases.
+- *What I changed:* nothing yet. **These labels still need a human pass.**
 
-**Moment 1**
+**Moment 2: taxonomy and criteria**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* the same request. Claude drafted the three labels, the
+  decision rule, and all five criteria in `criteria.md`, and committed the
+  criteria before running training.
+- *What came back:* the definitions above and the criteria file.
+- *What I changed:* nothing yet.
 
-**Moment 2**
-
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
-
-**Pre-labelling disclosure:**
+**Pre-labelling disclosure:** All 358 labels were produced by an AI model
+(Claude) and none has been human-reviewed yet. Every row's `note` column
+says `pre-labelled by Claude (AI); needs human review`. There are no `cold`
+rows.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
