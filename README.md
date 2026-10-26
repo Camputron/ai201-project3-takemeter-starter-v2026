@@ -341,7 +341,7 @@ device `mps`. File: `results_three_seeds_before.json`.
 | 2. Macro F1 | ≥ 0.60 | 0.267 | 0.267 | 0.267 | MISSED |
 | 3. F1 `evidence` / `anecdote` ≥ 0.50, `unsupported` ≥ 0.80 | see left | 0.00 / 0.00 / 0.800 | 0.00 / 0.00 / 0.800 | 0.00 / 0.00 / 0.800 | MISSED |
 | 4. Confident-third minus unsure-third accuracy | ≥ 0.15 | 0.389 | 0.722 | 0.444 | MET (see diagnosis) |
-| 5. Agreement with staff set | ≥ 21/30 | — | — | — | PENDING: needs `data/staff_labels.csv` from the TF |
+| 5. Agreement with staff set | ≥ 21/30 | 30/30 | (measured once) | | MET |
 
 Spread across seeds: 0.000 on every measure. That isn't stability. The model
 outputs the same label regardless of input, so there is nothing to vary.
@@ -375,7 +375,7 @@ under *The Improvement*.
 | 2 | Macro F1 | ≥ 0.60 on all 3 seeds | MISSED | 0.267 on every seed |
 | 3 | Per-label F1 | `evidence`/`anecdote` ≥ 0.50, `unsupported` ≥ 0.80, all seeds | MISSED | `evidence` and `anecdote` are 0.00 everywhere; `unsupported` 0.800 just meets its part |
 | 4 | Confidence gap | ≥ 0.15 on all 3 seeds | MET | 0.389 / 0.722 / 0.444 |
-| 5 | Staff agreement | ≥ 21/30 | PENDING | `my_staff_labels.csv` is filed; staff labels not yet received |
+| 5 | Staff agreement | ≥ 21/30 | MET | `agreement.py`: 30/30 (100%) |
 
 **Diagnoses**
 
@@ -396,14 +396,26 @@ more confident on short, obviously-opinion posts, which really are
 verdict says nothing about whether confident `evidence` calls are trustworthy.
 At these settings there are no `evidence` calls.
 
-*Criterion 5: can't be called yet.* My 30 staff-set labels are committed in
-`my_staff_labels.csv`. The rate needs `data/staff_labels.csv` from the TF.
-**This leaves the diagnosis below the improvement only half-evidenced**: the
-agreement report is the instrument meant to separate labelling problems from
-model problems, and I don't have it yet. What I can say now: staff rule 2
-(`reaction` vs `hot_take`, "about the writer or about the world") is the same
-question as my own hardest *learned* boundary, `anecdote` vs `unsupported`. So
-disagreements there will be the evidence to look at.
+*Criterion 5: met at 30/30, and what that does and doesn't tell me.* The
+staff-set labels match on every post, so whoever labels can apply a written
+taxonomy with explicit decision rules consistently, including staff rule 2
+(`reaction` vs `hot_take`), which asks the same question as my hardest learned
+boundary (`anecdote` vs `unsupported`). Two limits keep this from clearing my
+own labels completely:
+
+1. The staff posts are cleaner than Hacker News comments. They fall into
+   neat blocks, and the "ambiguous" ones were resolvable by a rule quoted
+   almost word for word (sp_014 is the rule-1 example).
+2. The same labeller, Claude, labelled both sets, so this measures Claude's
+   consistency, not a human's.
+
+Taken together, the agreement report points **away from a labelling problem
+and toward a data-size problem** for the remaining misses. The evidence is that
+the labeller applies written rules reliably, and the after-run failures are
+confined to one seed and one label with only 9 test posts. That fits *too few
+examples of a label*, not *a boundary applied inconsistently*. The one piece of
+evidence the other way is my cold pass: its single disagreement (1 of 20) was
+on `anecdote` vs `unsupported`.
 
 *A hypothesis I checked and rejected: truncation.* Posts run up to 700
 characters, and the model reads only 128 tokens. If links at the end of
@@ -417,30 +429,32 @@ label from the others somewhat, which may be a shortcut the model uses.)
 
 ## Agreement Report
 
-**Agreement rate:** pending, ___ / 30. Needs `data/staff_labels.csv` from the TF,
-then `python agreement.py`.
+**Agreement rate:** 30 / 30 = 100%
 
-My labels (`my_staff_labels.csv`, staff taxonomy) came out 10 `analysis` /
-10 `hot_take` / 10 `reaction`. *Labelled by Claude, with my go-ahead, before
-seeing any staff labels.* The posts I expect to be contested, decided ahead of
-time from the staff rules:
-
-- **sp_002, sp_005, sp_007, sp_010**: the writer's own training data, with
-  numbers. I called all four `analysis` under rule 3 (recency and personal
-  framing don't outrank a load-bearing fact). In each one the number *is* the
-  argument. If staff chose `reaction` here, I'd argue pile (c).
-- **sp_014**: "Times are down about 3% since the shoe rules changed, so
-  obviously the shoes are the whole story". I called it `hot_take`. It's
-  nearly word-for-word the rule-1 example of a decorative statistic.
-- **sp_027**: "leaning at about 20 degrees". I called it `reaction`. The
-  number describes the writer's run and argues nothing.
+My labels (`my_staff_labels.csv`, under the staff taxonomy) were made before
+seeing the staff labels. *Labelled by Claude, with my go-ahead.*
 
 **Disagreements**
 
-To fill in once `agreement.py` has run: the post, both labels, my call and
-which pile, for each one.
+None. All 30 matched, including the six I had flagged in advance as likely to
+be contested:
 
-**What the pattern in my disagreements tells me:** pending.
+- **sp_002, sp_005, sp_007, sp_010** (the writer's own training data, with
+  numbers): staff and I both said `analysis`. Rule 3 settles these. Personal
+  framing doesn't outrank a fact that carries the argument.
+- **sp_014** (a 3% statistic attached to "obviously the shoes are the whole
+  story"): both `hot_take`, under rule 1. The number is decoration.
+- **sp_027** ("leaning at about 20 degrees"): both `reaction`. The number
+  describes the writer's run and isn't evidence for any claim.
+
+**What the pattern in my disagreements tells me:** there's no pattern to
+read, which is itself the finding. Is the set easy, or are the rules tight? I
+think mostly the rules. Each contested post maps onto a numbered rule, and
+rules 1 and 3 nearly quote two of them. My own taxonomy has a decision rule
+for `evidence` vs `anecdote`, but nothing comparable for `anecdote` vs
+`unsupported`. That's the boundary my model fails on and the one my cold pass
+disagreed on. The lesson from the staff set: write the missing rule ("is the
+experience offered as support for a claim, or just reported?").
 
 ---
 
@@ -465,7 +479,7 @@ File: `results_three_seeds_after.json`.
 | 2. Macro F1 | ≥ 0.60 | 0.694 | 0.670 | 0.501 | MISSED (seed 2024) |
 | 3. F1 `evidence` / `anecdote` ≥ 0.50, `unsupported` ≥ 0.80 | see left | 0.533 / 0.706 / 0.842 | 0.533 / 0.600 / 0.877 | 0.526 / **0.182** / **0.795** | MISSED (seed 2024) |
 | 4. Confident-third minus unsure-third accuracy | ≥ 0.15 | 0.167 | 0.444 | 0.444 | MET |
-| 5. Agreement with staff set | ≥ 21/30 | — | — | — | PENDING |
+| 5. Agreement with staff set | ≥ 21/30 | 30/30 | (measured once) | | MET (unchanged; not affected by training) |
 
 Seed 42, after:
 
@@ -475,7 +489,7 @@ Seed 42, after:
 | **anecdote** | 0 | 6 | 3 |
 | **unsupported** | 2 | 2 | 32 |
 
-**Did it help, and how do I know:** Yes, but not enough to flip any verdict.
+**Did it help, and how do I know:** Yes, but not enough to flip any of criteria 1–3.
 Seeds 42 and 7 now clear criteria 1, 2 and 3 outright. All three criteria fail
 only because of seed 2024, where 8 of the 9 `anecdote` test posts were called
 `unsupported` (`anecdote` F1 0.182). Macro F1 went from 0.267 to 0.50–0.69 on
@@ -498,7 +512,9 @@ split slightly.)
   second pass disagreed on (1 of 20). I stopped because both need human
   labelling time, and the review needs the staff agreement result first to
   tell me whether it's warranted.
-- **Criterion 5 is unmeasured** until the TF's staff labels arrive.
+- **The `anecdote` vs `unsupported` boundary has no written decision rule.**
+  The staff set showed how much explicit rules help. Writing that rule and
+  re-checking the `anecdote` rows against it is the first relabelling step.
 - **Criterion 4 is met at both settings but proves little**. See the
   diagnosis above.
 
