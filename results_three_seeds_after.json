@@ -1,0 +1,164 @@
+[
+  {
+    "seed": 42,
+    "n_test": 54,
+    "accuracy": 0.7777777777777778,
+    "f1_macro": 0.6937736498108015,
+    "per_label": {
+      "evidence": {
+        "precision": 0.6666666666666666,
+        "recall": 0.4444444444444444,
+        "f1": 0.5333333333333333,
+        "support": 9
+      },
+      "anecdote": {
+        "precision": 0.75,
+        "recall": 0.6666666666666666,
+        "f1": 0.7058823529411765,
+        "support": 9
+      },
+      "unsupported": {
+        "precision": 0.8,
+        "recall": 0.8888888888888888,
+        "f1": 0.8421052631578947,
+        "support": 36
+      }
+    },
+    "confusion": {
+      "evidence": {
+        "evidence": 4,
+        "anecdote": 0,
+        "unsupported": 5
+      },
+      "anecdote": {
+        "evidence": 0,
+        "anecdote": 6,
+        "unsupported": 3
+      },
+      "unsupported": {
+        "evidence": 2,
+        "anecdote": 2,
+        "unsupported": 32
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.8677003979682922,
+      "mean_when_wrong": 0.7912401556968689,
+      "accuracy_most_confident_third": 0.8888888888888888,
+      "accuracy_least_confident_third": 0.7222222222222222,
+      "n_per_third": 18
+    },
+    "device": "mps",
+    "device_name": "Apple Silicon GPU (MPS)",
+    "torch_version": "2.14.1",
+    "max_length": 128
+  },
+  {
+    "seed": 7,
+    "n_test": 54,
+    "accuracy": 0.7777777777777778,
+    "f1_macro": 0.6700152207001522,
+    "per_label": {
+      "evidence": {
+        "precision": 0.6666666666666666,
+        "recall": 0.4444444444444444,
+        "f1": 0.5333333333333333,
+        "support": 9
+      },
+      "anecdote": {
+        "precision": 0.5454545454545454,
+        "recall": 0.6666666666666666,
+        "f1": 0.6,
+        "support": 9
+      },
+      "unsupported": {
+        "precision": 0.8648648648648649,
+        "recall": 0.8888888888888888,
+        "f1": 0.8767123287671232,
+        "support": 36
+      }
+    },
+    "confusion": {
+      "evidence": {
+        "evidence": 4,
+        "anecdote": 2,
+        "unsupported": 3
+      },
+      "anecdote": {
+        "evidence": 1,
+        "anecdote": 6,
+        "unsupported": 2
+      },
+      "unsupported": {
+        "evidence": 1,
+        "anecdote": 3,
+        "unsupported": 32
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.8317522406578064,
+      "mean_when_wrong": 0.5980461239814758,
+      "accuracy_most_confident_third": 0.9444444444444444,
+      "accuracy_least_confident_third": 0.5,
+      "n_per_third": 18
+    },
+    "device": "mps",
+    "device_name": "Apple Silicon GPU (MPS)",
+    "torch_version": "2.14.1",
+    "max_length": 128
+  },
+  {
+    "seed": 2024,
+    "n_test": 54,
+    "accuracy": 0.6851851851851852,
+    "f1_macro": 0.5010019220545536,
+    "per_label": {
+      "evidence": {
+        "precision": 0.5,
+        "recall": 0.5555555555555556,
+        "f1": 0.5263157894736842,
+        "support": 9
+      },
+      "anecdote": {
+        "precision": 0.5,
+        "recall": 0.1111111111111111,
+        "f1": 0.18181818181818182,
+        "support": 9
+      },
+      "unsupported": {
+        "precision": 0.7380952380952381,
+        "recall": 0.8611111111111112,
+        "f1": 0.7948717948717948,
+        "support": 36
+      }
+    },
+    "confusion": {
+      "evidence": {
+        "evidence": 5,
+        "anecdote": 1,
+        "unsupported": 3
+      },
+      "anecdote": {
+        "evidence": 0,
+        "anecdote": 1,
+        "unsupported": 8
+      },
+      "unsupported": {
+        "evidence": 5,
+        "anecdote": 0,
+        "unsupported": 31
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.8495648503303528,
+      "mean_when_wrong": 0.7097741961479187,
+      "accuracy_most_confident_third": 0.9444444444444444,
+      "accuracy_least_confident_third": 0.5,
+      "n_per_third": 18
+    },
+    "device": "mps",
+    "device_name": "Apple Silicon GPU (MPS)",
+    "torch_version": "2.14.1",
+    "max_length": 128
+  }
+]
