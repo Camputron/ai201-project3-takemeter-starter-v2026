@@ -289,10 +289,16 @@ by a human. The `note` column on every row says which pass produced it.
 
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 0.259 | 0.667 | +0.407 |
+| Macro F1 | 0.185 | 0.267 | +0.082 |
+| F1 — `anecdote` | 0.000 | 0.000 | +0.000 |
+| F1 — `evidence` | 0.310 | 0.000 | -0.310 |
+| F1 — `unsupported` | 0.244 | 0.800 | +0.556 |
+
+Both columns score the same 54 held-out posts (`test_split.csv`, seed 42). The
+baseline is `facebook/bart-large-mnli`, zero-shot, using
+`label_definitions.txt`. The trained column is `results.json`, the unit 5
+run at the default 3 epochs.
 
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
