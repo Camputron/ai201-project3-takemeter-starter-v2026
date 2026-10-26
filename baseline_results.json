@@ -1,0 +1,304 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 54,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 54,
+    "accuracy": 0.25925925925925924,
+    "f1_macro": 0.18474908887019906,
+    "per_label": {
+      "anecdote": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 9
+      },
+      "evidence": {
+        "precision": 0.1836734693877551,
+        "recall": 1.0,
+        "f1": 0.3103448275862069,
+        "support": 9
+      },
+      "unsupported": {
+        "precision": 1.0,
+        "recall": 0.1388888888888889,
+        "f1": 0.24390243902439027,
+        "support": 36
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "I feel very sad. I always wished I could meet her and have a little talk. She'll be forever remembered thanks to that coolest badass picture of her. Om shanti!",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Congratulations on finding out that you have good taste by default.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "I\u2019m living in an R&R desert myself, with some nice big abandoned shops, and have always wondered about the economics of building something. It amazes me how expensive a bowling alley actually is. Fantastic work in getting your costs way down, and doing something so genuinely useful for a wider audience. Hopefully other small bowling alleys will find this and try it out",
+      "gold": "anecdote",
+      "predicted": "evidence"
+    },
+    {
+      "text": "i'm curious to see whether this creates a large secondary market for EoL'd devices!",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "I agree, the toxic trolls focusing on minor nitpicks like a license agreement that allows your text editor to steal all your source codes really harshes the vibes.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Yes, on the shallow pockets. Also, I had the habit of putting my non-folding phone down when sitting, and then leaving it behind.(!) I would sit it down because it wouldn't fit into my pocket and I didn't always carry a hip pack. Except for the stupid high prices of the \"fold\" phones, they would put me right back in the non pocket fitting situation. (Although the extra screen space would be sweet!)",
+      "gold": "anecdote",
+      "predicted": "evidence"
+    },
+    {
+      "text": "This is an excellent execution and refreshing to see the thought process behind it. Kudos. the ideas such as these, gonna keep us swim sane and specifically extending far beyond the 9-5 is no longer sideProject category but refreshingly needed one.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "It's a shame they feel that way, but there should be no insult felt when I leave room for the concept of non-human intelligence.\n\n> their ideology is strongly based on liberty and dignity for all people\n\nPeople should include non-human people.\n\n> and fighting against real indignities that marginalized groups face\n\nNo need for them to have such a narrow concern, nor for me to follow that narrow concern. What your presenting to me sounds like a completely inconsistent ideology, if it arbitrarily sets the boundaries you've indicated.\n\nI'm not convinced your words represent more real people than mine do. If they do, I guess I'll have to settle for my own morality.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "My comment was actually tongue in cheek that the newest Python incarnation looks like the 20+ year old thing from Java, i.e. Python finally going in the right direction.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "That's still less leaned toward blatant lies like \"yes, here is a list\" and a doomacroll size of garbage litany.\n\nActually \"no, this is not something within the known corpus of this LLM, or the policy of its owners prevent to disclose it\" would be one of the most acceptable answer that could be delivered, which should cover most cases in honest reply.",
+      "gold": "unsupported",
+      "predicted": "unsupported"
+    },
+    {
+      "text": "Small non-profits and personal blogs encounter the same problem. It has nothing to do with being a multi-billion dollar corp.\n\nIf you have a better technological solution, we'd all love to know it. Because right now, site owners are using the best tools available.\n\nCriticizing when there's no other solution isn't very useful, is it?",
+      "gold": "unsupported",
+      "predicted": "unsupported"
+    },
+    {
+      "text": "Yes that's how the vectors work.\n\nThis overall issue has resulted in hilarious missteps in the past, including grok going off the rails and claiming to be mechahitler.",
+      "gold": "evidence",
+      "predicted": "evidence"
+    },
+    {
+      "text": "This is not some fundamental problem. There are amazing options that don't suffer this downside. Most people are just too lazy and want something that works out of the box, so they accept or ignore the inherent risks of tools like Claude Code or Codex. But you just have to invest a little bit of research into what you need and which open model and harness suits your requirements. Then you can have your cake and eat it too. Long term this will be the standard anyways, it's only difficult while the frontier is moving so fast and aimed at ridiculous IPOs.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "That's basically the problem of today's Apple, and it won't get fixed because they have an incentive to let the 3rd parties fix those problems (they win both by taking a cut of software sales in the app store and selling more Macs while costing less dev money).\n\nI doubt anything is going to get fixed, and Apple's hardware crown isn't as strong as before. But they like selling \"services,\" so...",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "The proposals are generally to have the government do the blind signature scheme. But then even if they do so in good faith, the ad services will immediately set to work thwarting it.",
+      "gold": "unsupported",
+      "predicted": "unsupported"
+    },
+    {
+      "text": "I understand your concerns but I'd argue that it is a bad idea to make it so that women are automatically shielded from any kind of scepticism. There is a sensible middle ground here between \"All women are lying harpies\" and \"Women can not be criticized at all without it being dangerous and misogynistic\".\n\nI think it's also important not to conflate an accusation somebody of benefiting from a partner's nepotism as equivalent to accusing them of sleeping their way to the top just because they're a woman.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Hi there, I'm the composer of the soundtrack\u2014glad that you enjoyed the music.\n\nThe idea was to have a single instrument (a cello) that builds upon itself, like the cells in an organism. It starts with a very minimalistic loop, and new layers of music are progressively added as the organisms grow in size.\n\nThanks for sharing Operation Neptune! I didn't know about it, but it's a great example of early adaptive game music.",
+      "gold": "anecdote",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Believe it or not, some companies are run by people who just want to sell widgets and get on with life. Some of them even have morals! Shocking, I know. Smaller companies, sure, but they'll still pay you a good living wage anywhere but SV. Not every boss is a megalomaniac.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "China doesn't have the same copyright culture underlying most of the hate in the US, so I would be curious if the genAI haters within Chinese culture have more pragmatic reasons to dislike it.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "If I was offered another dev on my team or their salary in Claude credits, and told to meet a deadline with a gun to my head, I\u2019m taking the credits.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "I'm pretty sure the GP was referring to https://handmade.network as their manifesto made multiple rounds here, was discussed at length and far more obviously related to \"handmade movement\" remark than your org.",
+      "gold": "evidence",
+      "predicted": "evidence"
+    },
+    {
+      "text": "I can't find anything in the ToS that it would go against. I even asked Claude to check its own ToS and tell me if it's okay.",
+      "gold": "anecdote",
+      "predicted": "evidence"
+    },
+    {
+      "text": "It's against Meta's terms to buy and sell accounts, thus the bank would never do such a deal unless you structured it a certain way: create a business, the account becomes property of the business, then Chase buys the business and thus the account. This is how certain Twitter accounts were sold a long time ago. $10k for @chasebank (which is what I assume your handle is) is quite good regardless, though.",
+      "gold": "evidence",
+      "predicted": "evidence"
+    },
+    {
+      "text": "No, but it does reflect the dangers of incentivizing everyone to use a single region.\n\nMost people (myself include) only choose it because its the cheapest. If multiple regions were the same price then there'd be less impact if one goes down.",
+      "gold": "anecdote",
+      "predicted": "evidence"
+    },
+    {
+      "text": "If you look carefully model training is just a relicensing exercise of your code",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "You can play Cyberpunk downloaded from GOG without launching Galaxy.\n\nBasically just go the the folder and run bin\\x64\\Cyberpunk2077.exe\n\nThe \"Launch Cyberpunk\" shortcut in the folder starts Galaxy and then runs the game from there.",
+      "gold": "evidence",
+      "predicted": "evidence"
+    },
+    {
+      "text": "I find that cards are a PITA, mainly because they're always expiring and I tend to change physical address a lot.",
+      "gold": "anecdote",
+      "predicted": "evidence"
+    },
+    {
+      "text": "I've grown increase hate towards Finder to the point that I avoid using at all costs. I've been migrating to the terminal, using fzf to find files and directories and yazi for a more graphical experience.\n\nHow can it be called FINDER, if it can't FIND things? cmd+shift+g should be a fuzzy search, but it returns nothing 80% of the time. cmd+f often can't see files that are in first level folders inside my home folder.\n\nMeanwhile, hitting Esc+C in the terminal (via fzf) it's totally effective.",
+      "gold": "anecdote",
+      "predicted": "evidence"
+    },
+    {
+      "text": "LLMs don't \"understand bitwise noise at a native level\". The unit of perception for an LLM is a token, a soundly superbit level. They would have the same difficulty with bits as the number of \"r\"s in \"strawberry\". Yes they can be post trained to deal with such difficulties, but it's no more \"native\" than a human who memorised the ASCII table.",
+      "gold": "evidence",
+      "predicted": "evidence"
+    },
+    {
+      "text": "I guess you don't use an IDE. Use VSCode or IntelliJ with auto completion and error highlighting as you type. Type hints are a blessing.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "/woosh\n\nBut I could be wrong.  I can't know but I'm pretty sure the GP was writing tongue in cheek.  As in mocking the business strategies that have been eroding the engines of our economy.",
+      "gold": "unsupported",
+      "predicted": "unsupported"
+    },
+    {
+      "text": "Care and education, and whatever they can manage with whatever\u2019s left over. Same as pretty much every council everywhere.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "I never claimed to be an enterprise, nor did I suggest this was the best option for them. Cheers!",
+      "gold": "unsupported",
+      "predicted": "unsupported"
+    },
+    {
+      "text": "This administration has consistently signaled that they will do all they legally can to punish those dissenters. Look at the White House labeling recent victims of ICE shootings as \"terrorists\", despite there being no sign of terroristic activity from these US citizens. Or, look at how the WH is cutting Medicaid benefits to Minnesota.\n\nGoing after the visa-holding employees of these companies is within reach of the WH, and it's consistent with their MO.",
+      "gold": "evidence",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Not exactly, I think part of the tools it has access to allows it to perform an \"investigation\" into recent malicious activity and account changes that may have occurred that were likely unauthorized (such as changing from an email used for a long period of time to a new one). I think this AI-version of this check was originally broken and just allowed any email but has now been fixed to only be emails that look like they were attached to the account, which is what the poster used to obtain access back into their account.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Maybe they could find another way to market it, e.g. Windows is free but with ads, and there is a subscription which makes ads go away. Or something else. Some creativity is needed.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Why should there be tolerance? You look it up once, then write a script or an alias if it's part of your workflow. Or made a note if it's worth that. I use magit and I get quick action and contextual help at every step of my interaction with git.",
+      "gold": "anecdote",
+      "predicted": "evidence"
+    },
+    {
+      "text": "vcpkg is also multi-platform (Linux, macOS).  I just haven't used it for any of those yet.",
+      "gold": "evidence",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Jury's still out whether they refuse to do that.\n\nCurrently it's just that they can't immediately implement those checks. They'd need some biometric check on API calls and some magical way to prevent the authenticated persons from reselling the service to unauthorized people.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "It's actually a really interesting question to reckon with - can an AI help raise a child and is that good or bad? I suspect there are ways you can use the current frontier that elevate the child's experience, especially when it comes to education and creative play. On the flipside using one of these models to automate storytelling to your 3 year old is probably a bad idea... The tricky bit is where to draw the line? Is using an LLM to collaboratively build a story alongside the parent and the child bad? I don't know, I suspect not, but that is not a simple question to answer.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Yes.  They also kept their DEI and environmental programs, actually substantive policies that many other companies are trashing because of this administration.  I'll take performative ass kissing while preserving the important policies any day.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "But at least they're taking _some_ stance. Yes, it could be higher, but it's better than nothing, and requires courage",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "If it forces you to keep running with more and more speed just to stay where you are, I wouldn't call it as \"benefits of society and civilization\". A lot of what we call as progress is a forced transformation of basic needs for the gains of business and politics not people.\n\nEven the healthcare, which everyone thinks as a \"benefit\" of the progress, only resulted in having lopsided demographic pyramid with countries full of old people. I can't think of single scientific result benefiting the human race in its evolutionary goals.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "OK so it's like Minecraft, but with a lot more combat. I can see the appeal.\n\n> The most effective anticheat tool really is game design.\n\nYep, that's always been my idea, and why I brought up Elo.\n\nIMO second most effective is to play with people you already trust. Or like on many public Factorio servers: strangers get limited permissions until proven trustworthy. But none of this works in a game with just a couple hundred players.\n\nThanks for sharing.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Praying for 100% tariffs on these frankly evil Canadians, importing Chinese state subsidized tractors, trying to destroy our tech sector. I bet they don't even come up to code.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "deno is VC funded which means enshitification is expected.\n\nIt would be ironic if deno ended up having more builtin AI bloat despite Bun being the one owned by an AI company. But I wouldn't be surprised.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "And yet, these same people will install modchips on consoles, pay for VPNs, use ReVanced, and generally find ways to do what they want rather than what corporations want, and safely too.\n\nPeople can learn about links to payment websites, self-signed apps/updates and unlocked bootloaders, because anything less is restricting computers for idiotic reasons.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "You said this analysis \u201cisn\u2019t strong enough\u201d for an inadvisable scenario you completely invented.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "The local inference is a product that came out of the data-center-driven AI.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "It's only \"necessary\" if one accepts that the current way is the only way.\n\nI'm not really sure what the point of encouraging new development is if the end result is \"big company scoops it up and makes it shitty, but people get to enjoy it for a few brief moments before that happens.\"",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Nothing has changed in decades regarding this. People just like to pretend something new is happening, because they're extremely desperate to proclaim a fundamental turning / ending of the US (which is why every single event brings out those claims: this time is different! America will never recover from this! etc).\n\nUS tech companies were previously forced into compliance with PRISM or threatened with destruction (see: escalating fines to infinity against Yahoo, forcing their eventual compliance).\n\nYou know what's new? This administration is doing out in the open what used to go on quietly.",
+      "gold": "evidence",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Another Chinese model, another payment wall. Great technology, same Alipay/WeChat problem.",
+      "gold": "unsupported",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Interesting, I feel like Apple's palm (I guess thumb?) rejection has been working pretty good for me. In fact I am pretty sure as you type the cursor is completely disabled?",
+      "gold": "anecdote",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Yeah I said xbox beacause whatever, but I'm just worried that Valve, while they are usually consumer-friendly never added a standalone gamepad mode to the controller directly and it is always reliant on Steam (and so you need to do tricks like using GlosSI[0] to use it outside).\n\nAnd at the same time, if you just plug in your controller while holding the right trigger, it acts as a usb drive where you can just replace (and grab it's original) firmware, so there have been some efforts.\n\nI at least want that from the new one, at the very least.\n\n[0] https://github.com/Alia5/GlosSI",
+      "gold": "evidence",
+      "predicted": "evidence"
+    }
+  ]
+}

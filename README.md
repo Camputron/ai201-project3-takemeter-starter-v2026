@@ -298,6 +298,17 @@ by a human. The `note` column on every row says which pass produced it.
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
 
+Prediction for the three-seed run (notebook defaults, 3 epochs): the trained
+model will beat the baseline on overall accuracy, macro F1 and `unsupported` F1
+on all three seeds, but **lose to it on `evidence` F1**, because I expect it to
+fall back to guessing `unsupported` for nearly everything, as it did on seed
+42, while the baseline at least catches some `evidence` posts (0.310).
+
+*Written by Claude, with my go-ahead, after seeing the baseline numbers. It was
+not blind: the seed-42 trained results from unit 5 (0.667 at 3 epochs, 0.759
+at 10) were already known, so this predicts the unseen three-seed run, not
+seed 42 alone.*
+
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
