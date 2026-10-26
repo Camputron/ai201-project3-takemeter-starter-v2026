@@ -316,164 +316,201 @@ at 10) were already known, so this predicts the unseen three-seed run, not
 seed 42 alone.*
 
 **What the gap actually means:**
-<!-- If the baseline matched your trained model, your fine-tuning added
-     nothing — and that is a real finding, not a failure. Say it plainly. -->
 
-
+The trained model's win is almost entirely the majority label. At the default
+3 epochs it predicted `unsupported` for every post (on all three seeds, see
+below), so its 0.667 accuracy is exactly what "always guess `unsupported`"
+scores. The baseline (0.259) does *worse* than that trivial guesser. Fine-tuning
+at the defaults learned the class prior and nothing else. The baseline is the
+only one of the two that finds any `evidence` posts. The prediction above held
+on all three seeds (the trained model won on accuracy, macro F1 and
+`unsupported`, and lost on `evidence`). One caveat: the baseline was scored
+only on the seed-42 split, so the seed-7 and seed-2024 comparisons assume its
+numbers would be similar on those splits.
 
 ---
 
 ## Run Log — Before
 
-<!-- Five criteria across three seeds. The notebook's section 6 prints the
-     spread table; the Target and Verdict columns are yours. -->
+Three seeds, notebook defaults (3 epochs, lr 2e-5, batch 16, max length 128),
+device `mps`. File: `results_three_seeds_before.json`.
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | ≥ 0.75 | 0.667 | 0.667 | 0.667 | MISSED |
+| 2. Macro F1 | ≥ 0.60 | 0.267 | 0.267 | 0.267 | MISSED |
+| 3. F1 `evidence` / `anecdote` ≥ 0.50, `unsupported` ≥ 0.80 | see left | 0.00 / 0.00 / 0.800 | 0.00 / 0.00 / 0.800 | 0.00 / 0.00 / 0.800 | MISSED |
+| 4. Confident-third minus unsure-third accuracy | ≥ 0.15 | 0.389 | 0.722 | 0.444 | MET (see diagnosis) |
+| 5. Agreement with staff set | ≥ 21/30 | — | — | — | PENDING: needs `data/staff_labels.csv` from the TF |
+
+Spread across seeds: 0.000 on every measure. That isn't stability. The model
+outputs the same label regardless of input, so there is nothing to vary.
 
 ### Confusion matrix
 
-<!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
-     An image of a matrix earns nothing. -->
+Seed 42, before (seeds 7 and 2024 are identical):
 
-| true \ predicted |  |  |  |
+| true \ predicted | evidence | anecdote | unsupported |
 |---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| **evidence** | 0 | 0 | 9 |
+| **anecdote** | 0 | 0 | 9 |
+| **unsupported** | 0 | 0 | 36 |
 
 **My biggest off-diagonal number, and what it means:**
-<!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
-     direction. "7 real analysis posts were called hot_take and only 3 went the
-     other way" is a direction, not just an error rate. -->
-
-
+9 real `evidence` posts were called `unsupported`, and 0 went the other way.
+The same is true of all 9 `anecdote` posts. The model hasn't learned either
+boundary in either direction. It has collapsed onto the majority label, so
+everything falls into the `unsupported` column.
 
 ---
 
 ## Verdicts and Diagnoses
 
-<!-- MET or MISSED against LAST UNIT's target. The target has to hold across
-     all three seeds, not turn up sometimes. -->
+Verdicts are for the **before** run (defaults). The improvement is assessed
+under *The Improvement*.
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | Overall accuracy | ≥ 0.75 on all 3 seeds | MISSED | 0.667 on every seed |
+| 2 | Macro F1 | ≥ 0.60 on all 3 seeds | MISSED | 0.267 on every seed |
+| 3 | Per-label F1 | `evidence`/`anecdote` ≥ 0.50, `unsupported` ≥ 0.80, all seeds | MISSED | `evidence` and `anecdote` are 0.00 everywhere; `unsupported` 0.800 just meets its part |
+| 4 | Confidence gap | ≥ 0.15 on all 3 seeds | MET | 0.389 / 0.722 / 0.444 |
+| 5 | Staff agreement | ≥ 21/30 | PENDING | `my_staff_labels.csv` is filed; staff labels not yet received |
 
 **Diagnoses**
 
-<!-- For each miss: the cause, and how you know. The four common causes are:
-     too few examples for a label, a boundary you applied inconsistently, a
-     genuinely hard label pair, and a task the model can't reach from this
-     much data.
+*Criteria 1–3 (before): the model couldn't reach the task with this training
+budget. It's not a labelling problem.* With 250 training rows and batch 16,
+3 epochs is 48 optimizer steps. The predictions are identical on all three
+seeds and splits, and every post gets `unsupported`. That pattern means the
+model never moved off the class prior. It can't be a boundary I labelled
+inconsistently, because inconsistent labels would produce *some* minority
+predictions, scattered wrongly. How I know: the same labels at 10 epochs (see
+*The Improvement*) give `evidence` F1 above 0.52 on every seed, so the labels
+contain a learnable signal.
 
-     ⚠️ Use your agreement report as evidence. It is the only instrument you
-     have that can tell a LABELLING problem from a MODEL problem, and this
-     section is graded on whether you used it that way. -->
+*Criterion 4: met, but the criterion is weaker than I meant.* A model that
+predicts one label for everything still "passes", because it is naturally
+more confident on short, obviously-opinion posts, which really are
+`unsupported`. The criterion is measurable, so I'm not revising it, but its MET
+verdict says nothing about whether confident `evidence` calls are trustworthy.
+At these settings there are no `evidence` calls.
 
+*Criterion 5: can't be called yet.* My 30 staff-set labels are committed in
+`my_staff_labels.csv`. The rate needs `data/staff_labels.csv` from the TF.
+**This leaves the diagnosis below the improvement only half-evidenced**: the
+agreement report is the instrument meant to separate labelling problems from
+model problems, and I don't have it yet. What I can say now: staff rule 2
+(`reaction` vs `hot_take`, "about the writer or about the world") is the same
+question as my own hardest *learned* boundary, `anecdote` vs `unsupported`. So
+disagreements there will be the evidence to look at.
 
+*A hypothesis I checked and rejected: truncation.* Posts run up to 700
+characters, and the model reads only 128 tokens. If links at the end of
+`evidence` posts were being cut off, that would explain the misses. But only
+7 of 61 `evidence` posts exceed 128 tokens, and only one has its first link
+past the cut-off. So truncation isn't the cause. (Median length: `unsupported`
+41 tokens, `evidence` 66, `anecdote` 62. Length alone separates the majority
+label from the others somewhat, which may be a shortcut the model uses.)
 
 ---
 
 ## Agreement Report
 
-<!-- Your rate against the staff set, and every disagreement adjudicated.
+**Agreement rate:** pending, ___ / 30. Needs `data/staff_labels.csv` from the TF,
+then `python agreement.py`.
 
-     Remember you labelled these 30 under the STAFF taxonomy in
-     data/staff_taxonomy.md, not your own — so every argument below is made
-     from those definitions and those decision rules. -->
+My labels (`my_staff_labels.csv`, staff taxonomy) came out 10 `analysis` /
+10 `hot_take` / 10 `reaction`. *Labelled by Claude, with my go-ahead, before
+seeing any staff labels.* The posts I expect to be contested, decided ahead of
+time from the staff rules:
 
-**Agreement rate:** ___ / 30 = ___%
-
-<!-- Nobody grades this number. A 60% who argues every disagreement from the
-     stated rules beats a 95% who wrote "staff was right" nine times. Several
-     of the 30 were chosen because they're genuinely ambiguous — you should be
-     winning some of these. -->
+- **sp_002, sp_005, sp_007, sp_010**: the writer's own training data, with
+  numbers. I called all four `analysis` under rule 3 (recency and personal
+  framing don't outrank a load-bearing fact). In each one the number *is* the
+  argument. If staff chose `reaction` here, I'd argue pile (c).
+- **sp_014**: "Times are down about 3% since the shoe rules changed, so
+  obviously the shoes are the whole story". I called it `hot_take`. It's
+  nearly word-for-word the rule-1 example of a decorative statistic.
+- **sp_027**: "leaning at about 20 degrees". I called it `reaction`. The
+  number describes the writer's run and argues nothing.
 
 **Disagreements**
 
-<!-- Three lines each: the post, both labels, and who you think is right and
-     why — grounded in the staff definitions you were both applying.
+To fill in once `agreement.py` has run: the post, both labels, my call and
+which pile, for each one.
 
-     Then sort each into one of three piles:
-       (a) the rule covered it and I applied it loosely → a consistency problem
-       (b) the rule genuinely doesn't say               → a gap in the definitions
-       (c) the rule is ambiguous here and my reading is defensible → argue it.
-           This is a legitimate win.
-
-     Pile (a) is the one that matters most for your diagnosis: if you applied a
-     written rule two different ways on 30 posts, that is direct evidence about
-     what you did across your own 200. -->
-
-**1.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
-
-**2.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
-
-**What the pattern in my disagreements tells me:**
-
-
+**What the pattern in my disagreements tells me:** pending.
 
 ---
 
 ## The Improvement
 
-**What I changed:**
+**What I changed:** `EPOCHS` from 3 to 10. Nothing else changed: same labels,
+same seeds, same learning rate, batch size and max length.
 
-**Which diagnosis pointed at it:**
+**Which diagnosis pointed at it:** the before-run diagnosis for criteria 1–3.
+Identical, all-`unsupported` output on every seed meant the model never left
+the class prior, which is a training-budget problem rather than a labelling
+one. So the fix to try was more optimizer steps (160 instead of 48), not
+relabelling.
 
 ### Run Log — After
 
+File: `results_three_seeds_after.json`.
+
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | ≥ 0.75 | 0.778 | 0.778 | 0.685 | MISSED (seed 2024) |
+| 2. Macro F1 | ≥ 0.60 | 0.694 | 0.670 | 0.501 | MISSED (seed 2024) |
+| 3. F1 `evidence` / `anecdote` ≥ 0.50, `unsupported` ≥ 0.80 | see left | 0.533 / 0.706 / 0.842 | 0.533 / 0.600 / 0.877 | 0.526 / **0.182** / **0.795** | MISSED (seed 2024) |
+| 4. Confident-third minus unsure-third accuracy | ≥ 0.15 | 0.167 | 0.444 | 0.444 | MET |
+| 5. Agreement with staff set | ≥ 21/30 | — | — | — | PENDING |
 
-**Did it help, and how do I know:**
+Seed 42, after:
 
-<!-- If it didn't, say so. Relabelling that didn't help is a genuinely
-     interesting result and earns full credit. -->
+| true \ predicted | evidence | anecdote | unsupported |
+|---|---|---|---|
+| **evidence** | 4 | 0 | 5 |
+| **anecdote** | 0 | 6 | 3 |
+| **unsupported** | 2 | 2 | 32 |
 
-
+**Did it help, and how do I know:** Yes, but not enough to flip any verdict.
+Seeds 42 and 7 now clear criteria 1, 2 and 3 outright. All three criteria fail
+only because of seed 2024, where 8 of the 9 `anecdote` test posts were called
+`unsupported` (`anecdote` F1 0.182). Macro F1 went from 0.267 to 0.50–0.69 on
+every seed, and `evidence` F1 went from 0.00 to above 0.52 on every seed, so
+the change is real and not one lucky split. The cost is stability: accuracy
+now spreads 0.093 across seeds (it was 0.000) and `anecdote` F1 spreads 0.524.
+With 9 `anecdote` posts per test split, one post moves that F1 by about 0.1.
+(Seed 42 here, 0.778, differs from the unit 5 stretch run's 0.759 at the same
+settings. Between them, the cold pass changed one label, which shifts the
+split slightly.)
 
 ---
 
 ## What's Still Broken
 
-<!-- For each criterion still missed: what you'd do, and why you stopped. -->
-
-
+- **Criteria 1–3 still miss, all because of seed 2024 and `anecdote`.** Next
+  I'd collect about 50 more `anecdote` posts (the brief's stretch option), so
+  that one post moves the test F1 less. I'd also do a human review of the
+  `anecdote`/`unsupported` rows, since that boundary is the one my own blind
+  second pass disagreed on (1 of 20). I stopped because both need human
+  labelling time, and the review needs the staff agreement result first to
+  tell me whether it's warranted.
+- **Criterion 5 is unmeasured** until the TF's staff labels arrive.
+- **Criterion 4 is met at both settings but proves little**. See the
+  diagnosis above.
 
 **The gap between what I meant my labels to capture and what the model
 learned:**
-<!-- Two sentences. Your confusion matrix is the evidence. -->
-
-
+I meant `anecdote` to mean "personal experience offered as support". The
+after-run matrices show the model mostly learned "first-person and
+moderately long". Short or opinion-heavy anecdotes fall into `unsupported`,
+which is why `anecdote` is the label that collapses on a bad split. `evidence`
+is learned more reliably (above 0.52 on every seed), probably because links,
+numbers and technical terms are surface features the model can latch onto,
+while "is this experience doing argumentative work" is not a surface feature.
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
