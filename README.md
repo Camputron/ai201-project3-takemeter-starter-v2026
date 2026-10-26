@@ -143,19 +143,28 @@ whose only content was a link, which the decision rule would have forced into
 `evidence` for the wrong reason. **358 rows remain**, kept whole and not
 trimmed.
 
-**How I labelled them:** **All 358 rows were pre-labelled by an AI (Claude,
-via Claude Code)** applying the definitions and decision rule above. Every row's
-`note` column says so. **No rows are marked `cold`. The 20 unaided cold labels
-the brief asks for have not been done yet**, and no row has yet been
-re-read and corrected by a human. See *How I Used AI*.
+**How I labelled them:** **All 358 rows were labelled by an AI (Claude, via
+Claude Code)**, applying the definitions and decision rule above. That was done
+with my go-ahead. Every row's `note` column says so.
+
+- **338 rows** say `pre-labelled by Claude (AI); needs human review`.
+- **20 rows are marked `cold`.** They were picked at random and relabelled by
+  Claude in a second, unaided pass, working from the text alone without seeing
+  the first-pass label. **They were not labelled by a human.** The second pass
+  agreed with the first on 19 of 20 (95%). The one change was a short post
+  about loving the field ("Yes, seen it all… I wish I'd have discovered the
+  field earlier"), which moved from `unsupported` to `anecdote` because the
+  poster is speaking from their own time in the field. **The 95% overstates
+  real consistency:** the same model labelled both times, so it shares its own
+  blind spots. Comparing against the staff set in unit 6 is a fairer test.
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-| `unsupported` | 237 | 66.2% |
+| `unsupported` | 236 | 65.9% |
 | `evidence` | 61 | 17.0% |
-| `anecdote` | 60 | 16.8% |
+| `anecdote` | 61 | 17.0% |
 | **Total** | 358 | 100% |
 
 No label is above the 70% cap, but `unsupported` is close to it and the
@@ -220,6 +229,10 @@ minority labels. Most of its remaining errors are minority posts called
 `unsupported`. This is one seed, so it isn't a verdict on any criterion; that
 is unit 6's job.
 
+**Note:** both runs above used the dataset *before* the cold pass, when the
+counts were 237 / 61 / 60. The cold pass changed one label afterwards, so the
+next run will train on slightly different data.
+
 **Split sizes:** train 250 · val 54 · test 54.
 
 | Label | train | val | test |
@@ -243,7 +256,9 @@ notebook's threshold of 8, so their F1 will be jumpy between seeds.
   comments.
 - *What came back:* the raw comments, then a label for each one, applied
   against the definitions above, with notes on the hard cases.
-- *What I changed:* nothing yet. **These labels still need a human pass.**
+- *What I changed:* nothing. With my go-ahead, Claude also did the 20 `cold`
+  rows as a second blind pass (see *The Dataset*). No label has been
+  human-reviewed.
 
 **Moment 2: taxonomy and criteria**
 
@@ -251,12 +266,14 @@ notebook's threshold of 8, so their F1 will be jumpy between seeds.
   decision rule, and all five criteria in `criteria.md`, and committed the
   criteria before running training.
 - *What came back:* the definitions above and the criteria file.
-- *What I changed:* nothing yet.
+- *What changed later:* after the first training run, Claude reworded the
+  criteria to say exactly which run and file each one is read from (there are
+  now two runs with different epoch counts). **No target number was changed.**
+  The originals are in commit `0b9673e`.
 
-**Pre-labelling disclosure:** All 358 labels were produced by an AI model
-(Claude) and none has been human-reviewed yet. Every row's `note` column
-says `pre-labelled by Claude (AI); needs human review`. There are no `cold`
-rows.
+**Pre-labelling disclosure:** All 358 labels, including the 20 `cold` rows,
+were produced by an AI model (Claude), with my go-ahead. None has been reviewed
+by a human. The `note` column on every row says which pass produced it.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 

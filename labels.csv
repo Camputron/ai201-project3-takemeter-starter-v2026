@@ -39,7 +39,7 @@ But good job googling this and getting fooled by an LLM",unsupported,pre-labelle
 
 Someone must have done the math. (Actual plans would actually probably be up somewhere as well, given Debian orgs nature.)",unsupported,pre-labelled by Claude (AI); needs human review
 There's no way they run out of names for a good while. There's  over 50 Toy Story characters at this point.,evidence,pre-labelled by Claude (AI); needs human review
-"I don't know, I would have enjoyed a ""Floopzy launches with $10B seed round"" or something.",unsupported,pre-labelled by Claude (AI); needs human review
+"I don't know, I would have enjoyed a ""Floopzy launches with $10B seed round"" or something.",unsupported,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 "As a mid/senior level engineer I feel the same - this kind of content just plain sucks, and seeing Gemini respond with the karma comment is icing on the cake.
 
 Not that long ago on HN there were things being posted regularly about hardware and software that I would define as no less than insane side projects.  Projects that people using LLMs today couldn't do in a lifetime.  Those posts are still up here and there, but very few compared to the past.  They were creative and hard, if not impossible feats.
@@ -121,7 +121,7 @@ I at least want that from the new one, at the very least.
 [0] https://github.com/Alia5/GlosSI",evidence,pre-labelled by Claude (AI); needs human review
 Do you use a separate user to play games? If not it's kinda useless as a user space process can read all your files and memory of running processes of the same user.,evidence,pre-labelled by Claude (AI); needs human review
 His recent stuff is pretty relevant to tech. Eg https://www.yanisvaroufakis.eu/category/books/technofeudalism-what-killed-capitalism/,evidence,pre-labelled by Claude (AI); needs human review
-"Good to hear it, cheers. I’ll be keeping a close eye on this once it launches, but I suspect I’ll see about getting myself one asap.",unsupported,pre-labelled by Claude (AI); needs human review
+"Good to hear it, cheers. I’ll be keeping a close eye on this once it launches, but I suspect I’ll see about getting myself one asap.",unsupported,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 "I don’t think either of these things requires more than a vote of Congress and the President’s signature. DC might, because of its unique Constitutional status and the current partisan Court, but there’s no argument for PR. You would have to abolish the filibuster, but Congress can do that once per session by majority vote — it’s just a legislative rule and not a Constitutional mechanism.",evidence,pre-labelled by Claude (AI); needs human review
 "Yes.  They also kept their DEI and environmental programs, actually substantive policies that many other companies are trashing because of this administration.  I'll take performative ass kissing while preserving the important policies any day.",unsupported,pre-labelled by Claude (AI); needs human review
 "It's not who votes that counts, but who counts the votes.
@@ -138,9 +138,9 @@ The Biden administration met seven of the requirements on the list. Do you serio
 "This administration has consistently signaled that they will do all they legally can to punish those dissenters. Look at the White House labeling recent victims of ICE shootings as ""terrorists"", despite there being no sign of terroristic activity from these US citizens. Or, look at how the WH is cutting Medicaid benefits to Minnesota.
 
 Going after the visa-holding employees of these companies is within reach of the WH, and it's consistent with their MO.",evidence,pre-labelled by Claude (AI); needs human review
-"But at least they're taking _some_ stance. Yes, it could be higher, but it's better than nothing, and requires courage",unsupported,pre-labelled by Claude (AI); needs human review
+"But at least they're taking _some_ stance. Yes, it could be higher, but it's better than nothing, and requires courage",unsupported,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 "Your comments are all flagged, dead, or downvoted to irrelevance in this thread, it’s clear you’re wrong, go get educated.",unsupported,pre-labelled by Claude (AI); needs human review
-"It takes two to tango. I bowed out nicely and put in a good faith effort to communicate why. Maybe on a different day in a different forum, we could have a useful conversation for both of us. I would look forward to that.",unsupported,pre-labelled by Claude (AI); needs human review
+"It takes two to tango. I bowed out nicely and put in a good faith effort to communicate why. Maybe on a different day in a different forum, we could have a useful conversation for both of us. I would look forward to that.",unsupported,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 "Macs have largely been the same.
 It is just a matter of buzy compute and letting all the accumulated tasks complete.
 
@@ -175,7 +175,7 @@ There’s no financial, political, or mass market incentive for browser APIs to 
 "I still think you'd get the part of the market that cares about creators.  The part that doesn't would pirate anyway.  Now, this is assuming they can determine that you are the original creator, but IMO this is what trademarks are for.",unsupported,pre-labelled by Claude (AI); needs human review
 "If it forces you to keep running with more and more speed just to stay where you are, I wouldn't call it as ""benefits of society and civilization"". A lot of what we call as progress is a forced transformation of basic needs for the gains of business and politics not people.
 
-Even the healthcare, which everyone thinks as a ""benefit"" of the progress, only resulted in having lopsided demographic pyramid with countries full of old people. I can't think of single scientific result benefiting the human race in its evolutionary goals.",unsupported,pre-labelled by Claude (AI); needs human review
+Even the healthcare, which everyone thinks as a ""benefit"" of the progress, only resulted in having lopsided demographic pyramid with countries full of old people. I can't think of single scientific result benefiting the human race in its evolutionary goals.",unsupported,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 "The Pixel 5 isn't supported anymore. The Pixel 6a still has a little less than 2 years of support left. These have become pretty cheap.
 
 The Pixel 8 and 8a aren't that expensive either. And keep in mind that they are supported until 2030 and 2031 respectively. [1] They not only receive security updates for 7 years, instead of the 5 years for previous Pixel generations, but also have stronger hardware security, by implementing the ARM memory tagging extension. [2]
@@ -215,7 +215,7 @@ Online slactivism actually just worsens the cause, because potential energy is v
 
 US tech companies were previously forced into compliance with PRISM or threatened with destruction (see: escalating fines to infinity against Yahoo, forcing their eventual compliance).
 
-You know what's new? This administration is doing out in the open what used to go on quietly.",evidence,pre-labelled by Claude (AI); needs human review
+You know what's new? This administration is doing out in the open what used to go on quietly.",evidence,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 "That's a typo, dhhs.
 
 Regardless it's not an inaccurate breakdown of where your tax dollars go.",unsupported,pre-labelled by Claude (AI); needs human review
@@ -232,7 +232,7 @@ Words apparently don't mean anything anymore.",anecdote,pre-labelled by Claude (
 If you look carefully model training is just a relicensing exercise of your code,unsupported,pre-labelled by Claude (AI); needs human review
 "The males of dicopomorpha echmepterygis are even smaller, with wide sexual dimorphism: https://en.wikipedia.org/wiki/Dicopomorpha_echmepterygis
 
-I never knew about these either.",evidence,pre-labelled by Claude (AI); needs human review
+I never knew about these either.",evidence,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 "Is banana a life? If yes, then hundreds of other lives are not included in this project.
 
 A simple idea but fabulous execution!",unsupported,pre-labelled by Claude (AI); needs human review
@@ -277,7 +277,7 @@ Thanks.",unsupported,pre-labelled by Claude (AI); needs human review
 
 Really good article though",unsupported,pre-labelled by Claude (AI); needs human review
 "That's completely unreasonable. Sure the camera processes them heavily. but when you open it up and start editing in photoshop you are changing this area over that one, or highlighting one color over another etc.. or just boosting the brightness way higher than what it looked like that day. It's a perfectly normal question to ask.",unsupported,pre-labelled by Claude (AI); needs human review
-"No, the last image is the ""camera"" version of it- though it's not clear if he means the realtime processing before snapping the picture or with the postprocessing that happens right after. Anyway, we have no way to understand how far the basic-processed raw picture is from a pleasing or normal-looking result because a) the lighting is so bad and artificial that we have no idea of how ""normal"" should look; b) the subject is unpleasant and the quality ""gross"" in any case.",unsupported,pre-labelled by Claude (AI); needs human review
+"No, the last image is the ""camera"" version of it- though it's not clear if he means the realtime processing before snapping the picture or with the postprocessing that happens right after. Anyway, we have no way to understand how far the basic-processed raw picture is from a pleasing or normal-looking result because a) the lighting is so bad and artificial that we have no idea of how ""normal"" should look; b) the subject is unpleasant and the quality ""gross"" in any case.",unsupported,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 "Your brain does a far more impressive job of fooling you into believing that the image you see of your surroundings in your brain is actually what your sensory apparatus is seeing.  It very much isn’t.  Just the mechanism to cope with your eye movement without making you woozy is, by itself, a marvel.
 
 Our brains are far more impressive than what amounts to fairly trivial signal processing done on digital images.",unsupported,pre-labelled by Claude (AI); needs human review
@@ -347,7 +347,7 @@ Because there is a real problem that needs to be solved one way or another.,unsu
 
 If you have a better technological solution, we'd all love to know it. Because right now, site owners are using the best tools available.
 
-Criticizing when there's no other solution isn't very useful, is it?",unsupported,pre-labelled by Claude (AI); needs human review
+Criticizing when there's no other solution isn't very useful, is it?",unsupported,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 "Somewhere, at a floating desk behind a wall of lava lamps, in a nyancatified ghostty terminal with 32 different shader plugins installed:
 
 You're absolutely right! I shouldn't have force pushed that change to master. Let me try and roll it back. * Confrobulating* Oh no! Cloudflare appears to be down and I cannot revert the change. Why don't you go make a cup of coffee until that comes back. This code is production ready, it's probably just a blip.",unsupported,pre-labelled by Claude (AI); needs human review
@@ -392,7 +392,7 @@ Maybe if China stops releasing capable models the pace will slow down a little, 
 It's helpful that DeepSeek is so cheap that it's actually reasonable to pay standard API rates.,unsupported,pre-labelled by Claude (AI); needs human review
 to synthesize an entirely new thing you have to start form the big bang. Everything else is derivative.,unsupported,pre-labelled by Claude (AI); needs human review
 "The models will be a commodity, the resources to run the frontier will be the luxury good.
-This is already the case nearly.",unsupported,pre-labelled by Claude (AI); needs human review
+This is already the case nearly.",unsupported,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 Whatever speculation you have on China’s foundry capabilities or a gap to TSMC will be wildly out of date within a year or 2. I’ll bet on it.,unsupported,pre-labelled by Claude (AI); needs human review
 "Agreed, but I I wonder what fraction of tasks really require frontier performance, either in terms of sheer difficulty or where speed is a matter of necessity. For many jobs, it's increasingly a question of whether you'd rather have one filet mignon or 20 good cheeseburgers (all from the same cow).",unsupported,pre-labelled by Claude (AI); needs human review
 "Yeah, just had to upgrade to Max 20x yesterday because of hitting the limits every day and the extra usage gets expensive very fast.",anecdote,pre-labelled by Claude (AI); needs human review
@@ -400,7 +400,7 @@ Whatever speculation you have on China’s foundry capabilities or a gap to TSMC
 "Correct me if I’m wrong aren’t they the innovators of multiple things like skills sub agents mcp and whatever this memory thing is agents files
 
 Seriously they are the apple iPhone or AWS of LLM a decade or so ago.",unsupported,pre-labelled by Claude (AI); needs human review
-"Now edit the books and replace all spell names with different ones, and try again",unsupported,pre-labelled by Claude (AI); needs human review
+"Now edit the books and replace all spell names with different ones, and try again",unsupported,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 "A real test is synthesizing 100,000 sentences of this slect random ones and then inject the traits you want thr LLM to detect and describe, eg have a set of words or phrases that may represent spells and have them used so that they do something. Then have the LLM find these random spells in the random corpus.",unsupported,pre-labelled by Claude (AI); needs human review
 "It’s not a bad look at all, no one outside of HN users cares at all",unsupported,pre-labelled by Claude (AI); needs human review
 "alas, 4.5 often hallucinates academic papers or creates false quotes. I think it's better at knowing that coding answers have deterministic output and being firm there.",unsupported,pre-labelled by Claude (AI); needs human review
@@ -415,7 +415,7 @@ I’m throwing shade at Facebook and google era not the dotcoms.,unsupported,pre
 It's a bit like a burglar staging a singing performance at the premises before committing a burglary.
 
 OTOH, staging that AI is more impressive than it seems looks a lot like the Moltbook PR stunt. ""Look Ma, they are achieving sentience"".",unsupported,pre-labelled by Claude (AI); needs human review
-"LLM's do not have personalities. LLM's do not take personal offense. I'm begging you to stop being so credulous about ""AI"" headlines.",unsupported,pre-labelled by Claude (AI); needs human review
+"LLM's do not have personalities. LLM's do not take personal offense. I'm begging you to stop being so credulous about ""AI"" headlines.",unsupported,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 "If it’s any consolation, nasty clawdbots are just a temporary distraction on the way to chaos and ruin. We’re very close to a Borgesian Internet of Babel, containing every imaginable hit piece and deepfake.",unsupported,pre-labelled by Claude (AI); needs human review
 "Noting my current idea for future reference:
 
@@ -453,7 +453,7 @@ If you're advocating this should all go in commit messages then I don't know wha
 
 LLM's make it even easier; ""Commit all the outstanding code in as many commits as you can, as long as the tests pass after each one"".  (Sometimes that second clause is ommitted, too.)",anecdote,pre-labelled by Claude (AI); needs human review
 You said this analysis “isn’t strong enough” for an inadvisable scenario you completely invented.,unsupported,pre-labelled by Claude (AI); needs human review
-This is the premise of the excellent book Your Code as a Crime Scene. The history and structure of the codebase reveals a wealth of information.,evidence,pre-labelled by Claude (AI); needs human review
+This is the premise of the excellent book Your Code as a Crime Scene. The history and structure of the codebase reveals a wealth of information.,evidence,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 Why can code even go in with breaking tests? They shouldn't even have the power to do that.,unsupported,pre-labelled by Claude (AI); needs human review
 I prefer `git commit --patch` and having a full editor for commit messages rather than a command-line -m argument to encourage me to actually write something useful.,anecdote,pre-labelled by Claude (AI); needs human review
 "If Claude was used in the creation of the change,  there's usually some dialogue for Claude to use.
@@ -492,7 +492,7 @@ Appreciate you sharing the info you could. That sounds really exhausting and pre
 I’m not implying it’s emergent unprompted behavior by the model; just offering my .02 what the non-communication model-generated content may be.,unsupported,pre-labelled by Claude (AI); needs human review
 "Yes I do. Happy to accept assertions like this grounded in proof - it would be an interesting development.
 
-All the orgasmic descriptions of the coming machine rapture seem more like fantasies than anything grounded, not really interested in fairytales.",unsupported,pre-labelled by Claude (AI); needs human review
+All the orgasmic descriptions of the coming machine rapture seem more like fantasies than anything grounded, not really interested in fairytales.",unsupported,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 "LLMs don't ""understand bitwise noise at a native level"". The unit of perception for an LLM is a token, a soundly superbit level. They would have the same difficulty with bits as the number of ""r""s in ""strawberry"". Yes they can be post trained to deal with such difficulties, but it's no more ""native"" than a human who memorised the ASCII table.",evidence,pre-labelled by Claude (AI); needs human review
 Humans are general intelligences. An average human can’t do either of those. Your bar is way too high.,unsupported,pre-labelled by Claude (AI); needs human review
 "It's actually a really interesting question to reckon with - can an AI help raise a child and is that good or bad? I suspect there are ways you can use the current frontier that elevate the child's experience, especially when it comes to education and creative play. On the flipside using one of these models to automate storytelling to your 3 year old is probably a bad idea... The tricky bit is where to draw the line? Is using an LLM to collaboratively build a story alongside the parent and the child bad? I don't know, I suspect not, but that is not a simple question to answer.",unsupported,pre-labelled by Claude (AI); needs human review
@@ -622,7 +622,7 @@ Seems to be the best system IMO",evidence,pre-labelled by Claude (AI); needs hum
 
 It is a great field though. The wide range of tech you're confronted with is astonishing and all of it live 24/7.
 
-I wish I'd have discovered the field earlier in my life, there is so much room for improvement.",unsupported,pre-labelled by Claude (AI); needs human review
+I wish I'd have discovered the field earlier in my life, there is so much room for improvement.",anecdote,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human; first pass said unsupported"
 "Not exactly, I think part of the tools it has access to allows it to perform an ""investigation"" into recent malicious activity and account changes that may have occurred that were likely unauthorized (such as changing from an email used for a long period of time to a new one). I think this AI-version of this check was originally broken and just allowed any email but has now been fixed to only be emails that look like they were attached to the account, which is what the poster used to obtain access back into their account.",unsupported,pre-labelled by Claude (AI); needs human review
 Bro a VPN and please was all it took to own someone's Instagram? I've seen more security on a middle schooler's diary.,unsupported,pre-labelled by Claude (AI); needs human review
 "They're viable, you just have to think about them differently than how you think about support employees.
@@ -632,9 +632,9 @@ With humans, it's acceptable to have an ""authenticate a customer"" tool and a "
 With agents, you can achieve the same outcome, but the constraint needs to be enforced by code, not job training and employee handbooks.",unsupported,pre-labelled by Claude (AI); needs human review
 "Probably not news to anyone here, but partial step in this direction is to put down vetted official contact details for the institutions.
 
-Every time someone calls to say there's a problem with your account, you ask for their name and/or extension number, because recontacting through the institution is your only good way of verifying their identity.",unsupported,pre-labelled by Claude (AI); needs human review
+Every time someone calls to say there's a problem with your account, you ask for their name and/or extension number, because recontacting through the institution is your only good way of verifying their identity.",unsupported,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 "It's against Meta's terms to buy and sell accounts, thus the bank would never do such a deal unless you structured it a certain way: create a business, the account becomes property of the business, then Chase buys the business and thus the account. This is how certain Twitter accounts were sold a long time ago. $10k for @chasebank (which is what I assume your handle is) is quite good regardless, though.",evidence,pre-labelled by Claude (AI); needs human review
-"You've gotta leverage your network and find friends you know who work at Meta/IG. I was able to get my account back without asking friends at IG (because mine wasn't fully disabled just password changed), but people I know who lost their accounts have had to ask multiple people very up the chain at IG to do some special restoration.",anecdote,pre-labelled by Claude (AI); needs human review
+"You've gotta leverage your network and find friends you know who work at Meta/IG. I was able to get my account back without asking friends at IG (because mine wasn't fully disabled just password changed), but people I know who lost their accounts have had to ask multiple people very up the chain at IG to do some special restoration.",anecdote,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 "I know I'm thinking, I have no idea if you're thinking, or if you're a human or an LLM. But I wouldn't assume you aren't thinking just from reading your output.",unsupported,pre-labelled by Claude (AI); needs human review
 "I should've edited my comment, on reflection my example doesn't fit! I think rincebrain had a nice way of wording what I now believe to be your intent!",unsupported,pre-labelled by Claude (AI); needs human review
 "What about your interaction makes you think he’s scared of black people, specifically?",unsupported,pre-labelled by Claude (AI); needs human review
@@ -688,7 +688,7 @@ When it comes to the notion of requiring DBCs without also requiring remote atte
 Maybe it's not important for applications to be able to require DBCs without attestation. But at first blush it seems like a valid thing to want.",unsupported,pre-labelled by Claude (AI); needs human review
 "The proposals are generally to have the government do the blind signature scheme. But then even if they do so in good faith, the ad services will immediately set to work thwarting it.",unsupported,pre-labelled by Claude (AI); needs human review
 The one that's so incredibly broken that Apple and Visa keep blaming eachother when they get a report that you can steal any amount by making yourself pass as a transit card ? Cool security theater. https://hackernoon.com/veritasium-stole-$10000-from-mkbhds-locked-iphone-apple-and-visa-knew-about-the-bug-for-5-years,evidence,pre-labelled by Claude (AI); needs human review
-Flaunting money seems to be a big selling point for many apple drones.,unsupported,pre-labelled by Claude (AI); needs human review
+Flaunting money seems to be a big selling point for many apple drones.,unsupported,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 It's more complicated than that. The bootloader can maintain the chain of trust for macOS while allowing unsecured OSes next to it.,evidence,pre-labelled by Claude (AI); needs human review
 "Some design stuff are quite bad like the Liquid Glass, but the rest is fine I think. The M series wouldn't have gone as well as it did if software side wasn't up for the task",unsupported,pre-labelled by Claude (AI); needs human review
 "How do you see AI playing out there? Are you glad you got out before AI coding became a thing? What are you up to in your retirement years, anything fun? Thanks.",unsupported,pre-labelled by Claude (AI); needs human review
@@ -700,7 +700,7 @@ always find it funny when americans say ""it's good now"", no brother they fixed
 "It's been some years now, but apple maps put me into a loop once in Branson, Missouri.
 
 It drove me around a couple miles that went right back to the intersection where we started, and then wanted me to start the loop again.",anecdote,pre-labelled by Claude (AI); needs human review
-"Maybe they could find another way to market it, e.g. Windows is free but with ads, and there is a subscription which makes ads go away. Or something else. Some creativity is needed.",unsupported,pre-labelled by Claude (AI); needs human review
+"Maybe they could find another way to market it, e.g. Windows is free but with ads, and there is a subscription which makes ads go away. Or something else. Some creativity is needed.",unsupported,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 "Actually, the date was 29 June 2007. This is when GPLv3 was released and Apple could no long continue using the fruits of open source labor without giving anything back. That's when MacOS X's UNIX underlying began to ossify. Sure Apple kept backporting important security things, but it froze in time all of the GNU utilities that made UNIX on MacOS X good.",evidence,pre-labelled by Claude (AI); needs human review
 "I loved Zed for a few years - but their insistence on not letting Claude Code use Zed as an external editor forced me to build my own IDE.
 
@@ -721,7 +721,7 @@ If you mean that dependencies better resolve = project better be in a mostly bui
 Offer still stands if you run into other bugs that aren't in our issue tracker.",unsupported,pre-labelled by Claude (AI); needs human review
 "From what I can see, one of the top comments (at the time of this comment) is worried about legalese claiming to have ""non-exclusive, worldwide, royalty-free, fully paid-up, non-sublicensable"" access to your source code. I think it is very fair criticism to not want to give away your source code.
 
-https://news.ycombinator.com/item?id=47953501",evidence,pre-labelled by Claude (AI); needs human review
+https://news.ycombinator.com/item?id=47953501",evidence,"cold - relabelled unaided by Claude (AI) in a second pass without seeing the first label, not by a human"
 "Maybe use it to run a small local LLM + Zed instead of just VS Code?
 
 (I’m probably off on how much memory it takes to run a small LLM, but still.)",unsupported,pre-labelled by Claude (AI); needs human review
