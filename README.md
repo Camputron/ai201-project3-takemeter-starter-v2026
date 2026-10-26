@@ -505,9 +505,10 @@ split slightly.)
 **The gap between what I meant my labels to capture and what the model
 learned:**
 I meant `anecdote` to mean "personal experience offered as support". The
-after-run matrices show the model mostly learned "first-person and
-moderately long". Short or opinion-heavy anecdotes fall into `unsupported`,
-which is why `anecdote` is the label that collapses on a bad split. `evidence`
+after-run matrices show `anecdote` leaking into `unsupported` far more than
+the other way (seed 2024: 8 of 9). My guess, not yet tested, is that the model
+learned something closer to "first-person and moderately long", so short or
+opinion-heavy anecdotes fall into `unsupported`. `evidence`
 is learned more reliably (above 0.52 on every seed), probably because links,
 numbers and technical terms are surface features the model can latch onto,
 while "is this experience doing argumentative work" is not a surface feature.
