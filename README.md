@@ -275,6 +275,21 @@ notebook's threshold of 8, so their F1 will be jumpy between seeds.
 were produced by an AI model (Claude), with my go-ahead. None has been reviewed
 by a human. The `note` column on every row says which pass produced it.
 
+**Unit 6:** Claude Code also did the unit 6 work with my go-ahead. It ran the
+three-seed before and after runs and the bare-names baseline, labelled the 30
+staff posts in `my_staff_labels.csv` before the staff labels were opened, and
+wrote the prediction, verdicts, diagnoses, agreement report and improvement
+write-up. Two specific moments:
+
+- *Checking a diagnosis instead of asserting it:* Claude suspected the
+  128-token limit was cutting links off `evidence` posts. It measured instead:
+  only 1 of 61 `evidence` posts loses its first link. The hypothesis is
+  recorded as rejected in *Verdicts and Diagnoses*.
+- *Catching a weak criterion:* Claude noticed that criterion 4 (the confidence
+  gap) was MET even by the before-run model, which predicts `unsupported` for
+  everything. The criterion was left unrevised because it is measurable, and
+  the MET verdict is flagged as uninformative.
+
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
      Don't fill these in during unit 5.
@@ -299,6 +314,26 @@ Both columns score the same 54 held-out posts (`test_split.csv`, seed 42). The
 baseline is `facebook/bart-large-mnli`, zero-shot, using
 `label_definitions.txt`. The trained column is `results.json`, the unit 5
 run at the default 3 epochs.
+
+**What my definitions were worth.** The same baseline was run once more with
+bare label names and no definitions
+(`baseline_results_bare_names.json`):
+
+| Measure | Bare names | With definitions | Difference |
+|---|---|---|---|
+| Overall accuracy | 0.167 | 0.259 | +0.092 |
+| Macro F1 | 0.155 | 0.185 | +0.030 |
+| F1 — `anecdote` | 0.298 | 0.000 | -0.298 |
+| F1 — `evidence` | 0.167 | 0.310 | +0.143 |
+| F1 — `unsupported` | 0.000 | 0.244 | +0.244 |
+
+The definitions are worth about 9 points of accuracy. Almost all of that comes
+from `unsupported`: bare names never predict it, and with the definition the
+baseline at least finds some. They also trade `anecdote` for `evidence`. The
+`evidence` definition's mention of "a concrete technical mechanism" seems to
+pull first-person posts that mention tools toward `evidence`. Even the better
+baseline stays well below the 0.667 trivial guesser. The baseline reported in
+the table above is the **with-definitions** run.
 
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
