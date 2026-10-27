@@ -51,74 +51,77 @@ whether you hit them:
 
 ---
 
-> **How every criterion is measured.** Each one uses the unit 6 three-seed run
-> (notebook section 6, seeds 42, 7 and 2024) on `labels.csv`, scored on each
-> seed's held-out test split, with whatever training settings are in the
-> notebook at that time. A criterion is **met** only if it holds on all three
-> seeds. Criterion 5 is the exception: it is measured once, with `agreement.py`.
+## 1. Overall accuracy is at least 0.75 on the held-out test split, on all three seeds
+
+**Why this target:** `unsupported` is about 66% of my 358 rows, so a model that
+always guesses `unsupported` already scores about 0.66. 0.75 means the model
+has to get a real share of the `evidence` and `anecdote` posts right as well.
+Anything below that hasn't learned much beyond the majority label.
+
+> **Revised in unit 6:** Overall accuracy of at least 0.75 on every seed, read from `accuracy` in `results_three_seeds_<run>.json`. Measured on the three-seed run (notebook section 6, seeds 42, 7, 2024), on each seed's held-out test split, with whatever training settings the notebook had at the time. MET only if it holds on all three seeds.
 >
-> *Wording revised after the first training run to remove this ambiguity. Every
-> target number is unchanged from the original commit (`0b9673e`).*
-
-## 1. Overall accuracy of at least 0.75 on every seed
-
-Read from `accuracy` for each seed in `results_three_seeds_before.json`.
-
-**Why this target:** `unsupported` is about 66% of my 358 rows, so always
-guessing it already scores about 0.66. 0.75 forces the model to get a real
-share of `evidence` and `anecdote` right. Anything under that has barely
-beaten the majority guess.
+> **Why revised:** The original never said which run it is judged on. By unit 6 there were two training configurations (3 and 10 epochs) and four results files, so it couldn't produce a single verdict. **The target is unchanged.** *(Reworded by Claude, with my go-ahead, after the first training run; moved under the original in unit 6.)*
 
 ---
 
-## 2. Macro F1 of at least 0.60 on every seed
+## 2. Macro F1 is at least 0.60 on the held-out test split, on all three seeds
 
-Read from `f1_macro` for each seed.
+**Why this target:** accuracy hides the two thin labels, and macro F1 doesn't,
+because it weights all three labels equally. The always-`unsupported` guesser
+scores a macro F1 of about 0.27 here. 0.60 is a level I'd call useful with
+about 60 examples per minority label. It doesn't require the model to be good
+at every label.
 
-**Why this target:** accuracy hides the two thin labels and macro F1 doesn't.
-Always guessing `unsupported` scores a macro F1 of about 0.27 on this data.
-0.60 is what I'd call useful with about 60 examples per minority label. It
-doesn't require the model to be good at everything.
-
----
-
-## 3. F1 of at least 0.50 for `evidence` and for `anecdote`, and at least 0.80 for `unsupported`, on every seed
-
-Read from `per_label.<label>.f1` for each seed. All three label conditions must
-hold on all three seeds.
-
-**Why this target:** `evidence` (61 rows) and `anecdote` (61 rows) each get only
-about 9 posts per test split, so one post moves their F1 a lot, which is why
-their floor is lower. `unsupported` has about 36 test posts and gets the higher
-bar. 0.50 on a thin label still means the model catches at least half of them
-without flooding that label with false positives.
+> **Revised in unit 6:** Macro F1 of at least 0.60 on every seed, read from `f1_macro`. Measured on the three-seed run (notebook section 6, seeds 42, 7, 2024), on each seed's held-out test split, with whatever training settings the notebook had at the time. MET only if it holds on all three seeds.
+>
+> **Why revised:** The original never said which run it is judged on. By unit 6 there were two training configurations (3 and 10 epochs) and four results files, so it couldn't produce a single verdict. **The target is unchanged.** *(Reworded by Claude, with my go-ahead, after the first training run; moved under the original in unit 6.)*
 
 ---
 
-## 4. The most-confident third is at least 0.15 more accurate than the least-confident third, on every seed
+## 3. Every label has an F1 of at least 0.50, and `unsupported` has an F1 of at least 0.80, on all three seeds
 
-Read as `confidence.accuracy_most_confident_third` minus
-`confidence.accuracy_least_confident_third` for each seed.
+**Why this target:** `evidence` (61 rows) and `anecdote` (60 rows) each get only
+about 9 posts in a 15% test split, so their F1 will jump around between seeds.
+That's why the floor for them is lower. `unsupported` has 237 rows, about 36 of
+them in test, so I hold it to a higher bar. 0.50 on a thin label still means
+the model finds at least half of them without flooding that label with false
+positives.
 
-**Why this target:** if this classifier sorted a feed, a confident `evidence`
-call should be trustworthy in a way a hesitant one isn't. Each third holds
-about 18 posts, so one post moves a third's accuracy by about 0.055. A gap of
-0.15 is roughly three posts, which is more than one or two lucky calls can
-produce.
+> **Revised in unit 6:** F1 of at least 0.50 for `evidence` and for `anecdote`, and at least 0.80 for `unsupported`, read from `per_label.<label>.f1`. All three conditions on all three seeds. Measured on the three-seed run (notebook section 6, seeds 42, 7, 2024), on each seed's held-out test split, with whatever training settings the notebook had at the time. MET only if it holds on all three seeds.
+>
+> **Why revised:** The original never said which run it is judged on. By unit 6 there were two training configurations (3 and 10 epochs) and four results files, so it couldn't produce a single verdict. **The target is unchanged.** *(Reworded by Claude, with my go-ahead, after the first training run; moved under the original in unit 6.)*
 
 ---
 
-## 5. At least 21 of 30 staff posts (70%) labelled the same as staff
+## 4. The most-confident third of test predictions is at least 0.15 more accurate than the least-confident third, on all three seeds
 
-Read as the agreement rate `agreement.py` prints, comparing
-`my_staff_labels.csv` against `data/staff_labels.csv`.
+(Measured with `confidence.accuracy_most_confident_third` minus
+`confidence.accuracy_least_confident_third` in `results.json`.)
 
-**Why this target:** this one measures the labeller, not the model. My hardest
-boundary (a personal story that also includes a link or a number) needed a
-written rule to settle. If someone else's written rules can't be applied 70% of
-the time, mine probably weren't applied consistently either. 70% is well above
-the roughly 33% from guessing among three labels, and leaves room for the posts
-staff picked because they're ambiguous.
+**Why this target:** if this classifier were used to sort a feed, a confident
+`evidence` call should be one you can trust more than a hesitant one. With
+about 54 test posts, each third has about 18 posts, so a single post moves a
+third's accuracy by about 0.055. 0.15 is a gap of roughly three posts, which
+is larger than what one or two lucky calls would produce.
+
+> **Revised in unit 6:** `confidence.accuracy_most_confident_third` minus `confidence.accuracy_least_confident_third` is at least 0.15 on every seed. Measured on the three-seed run (notebook section 6, seeds 42, 7, 2024), on each seed's held-out test split, with whatever training settings the notebook had at the time. MET only if it holds on all three seeds.
+>
+> **Why revised:** The original never said which run it is judged on. By unit 6 there were two training configurations (3 and 10 epochs) and four results files, so it couldn't produce a single verdict. **The target is unchanged.** *(Reworded by Claude, with my go-ahead, after the first training run; moved under the original in unit 6.)*
+
+---
+
+## 5. My labels agree with the staff labels on at least 21 of the 30 staff posts (70%), using `agreement.py`
+
+**Why this target:** this criterion is about the labeller (me), not the model.
+My hardest boundary, a personal story that also includes a link or a number,
+took a written rule to settle. If I can't apply someone else's written rules
+70% of the time, I probably applied mine inconsistently too. 70% sits clearly
+above the roughly 33% you'd get by guessing among three labels. It leaves room
+for the deliberately ambiguous posts staff included.
+
+> **Revised in unit 6:** At least 21 of 30 staff posts (70%) labelled the same as staff, read as the rate `agreement.py` prints when comparing `my_staff_labels.csv` against `data/staff_labels.csv`. Measured once, not per seed.
+>
+> **Why revised:** The original never said which run it is judged on. By unit 6 there were two training configurations (3 and 10 epochs) and four results files, so it couldn't produce a single verdict. **The target is unchanged.** *(Reworded by Claude, with my go-ahead, after the first training run; moved under the original in unit 6.)*
 
 ---
 
